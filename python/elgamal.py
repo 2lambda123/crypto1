@@ -1,8 +1,8 @@
-import random
 from Crypto.Random import get_random_bytes
 from Crypto.PublicKey import ElGamal
 
 import cryptocommons as commons
+import secrets
 
 print("-----------------------")
 print("key generation")
@@ -14,7 +14,7 @@ p = getattr(config, 'p')"""
 
 g = 6
 
-x = random.randint(1, p-2)
+x = secrets.SystemRandom().randint(1, p-2)
 
 y = pow(g, x, p)
 
@@ -28,7 +28,7 @@ print("encryption")
 #Bob knows g, p, y
 
 m = 100
-k = random.randint(1, p-1)
+k = secrets.SystemRandom().randint(1, p-1)
 
 c1 = pow(g, k, p)
 c2 = m * pow(y, k, p) % p
@@ -53,10 +53,10 @@ print("signing")
 
 hash = 100
 
-k = random.randint(1,p-1)
+k = secrets.SystemRandom().randint(1,p-1)
 
 while commons.gcd(p-1, k) != 1:
-	k = random.randint(1,p-1)
+	k = secrets.SystemRandom().randint(1,p-1)
 	
 #print("random key: ",k)
 

@@ -1,3 +1,5 @@
+import secrets
+
 p = pow(2, 255) - 19
 
 base = 15112221349535400772501151409588531511454012693041857206046113283949847762202, 46316835694926478169428394003475163141307993866256225615783033603165251855960
@@ -69,10 +71,7 @@ x0 = base[0]; y0 = base[1]
 
 print("----------------------")
 print("Key Generation: ")
-
-#privateKey = 47379675103498394144858916095175689779086087640336534911165206022228115974270 #32 byte secret key
-import random
-privateKey = random.getrandbits(256) #32 byte secret key
+privateKey = secrets.SystemRandom().getrandbits(256) #32 byte secret key
 #print("private key: ",privateKey)
 
 publicKey = applyDoubleAndAddMethod(base, privateKey, a, d, p)
