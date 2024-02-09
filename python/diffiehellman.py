@@ -1,6 +1,6 @@
-import random
+import secrets
 
-mod = random.getrandbits(512) #prime
+mod = secrets.SystemRandom().getrandbits(512) #prime
 g = 6
 
 print("public information:")
@@ -9,11 +9,11 @@ print("base generator: ",g)
 
 print("--------------------")
 
-alicePrivate = random.getrandbits(512)
+alicePrivate = secrets.SystemRandom().getrandbits(512)
 alicePublic = pow(g, alicePrivate, mod)
 print("alice public: ",alicePublic)
 
-bobPrivate = random.getrandbits(512)
+bobPrivate = secrets.SystemRandom().getrandbits(512)
 bobPublic = pow(g, bobPrivate, mod)
 print("bob public: ",bobPublic)
 

@@ -1,7 +1,7 @@
 import time
-import random
 
 import cryptocommons as commons
+import secrets
 
 starttime = time.time()
 
@@ -19,12 +19,12 @@ totient = (p-1)*(q-1)
 print("mod: ",n)
 print("totient function",totient)
 
-e = random.randint(1, totient)
+e = secrets.SystemRandom().randint(1, totient)
 
 #e and totient must be coprime
 
 while commons.gcd(totient, e) != 1:
-	e = random.randint(1, totient)
+	e = secrets.SystemRandom().randint(1, totient)
 
 print("public key: ",e)
 
